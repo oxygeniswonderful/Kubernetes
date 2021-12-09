@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-for-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      name: server-pod
+      labels:
+        app: server
+    spec:
+      containers:
+      - image: oxygeniswonderful/kuber
+        name: server-docker
+        ports:
+        - containerPort: 7777
